@@ -1,6 +1,6 @@
 function main () {
   function randomChoice (arr) {
-    return arr[Math.floor(arr.length * Math.random())];
+    return arr[Math.floor(arr.length * Math.random())]
   }
   function removeParams (uri) {
     return uri.replace(/([&\\?].+?=.+?$)/, '')
@@ -11,7 +11,6 @@ function main () {
     return list
       .map(t => t.trim())
       .filter(t => t)
-
   }
 
   const url = new URL(location.href)
@@ -20,7 +19,7 @@ function main () {
   if (listText) {
     listText = decodeURI(listText)
   } else {
-    listText = 'Sushi,Tempura,Yakitori'
+    listText = 'Sushi,Ramen,Yakitori'
   }
 
   const textarea = document.getElementById('textarea')
@@ -34,7 +33,7 @@ function main () {
     const url = new URL(removeParams(location.href))
 
     if (textarea.value) {
-      url.searchParams.set('list', listTextToArr(textarea.value));
+      url.searchParams.set('list', listTextToArr(textarea.value))
     }
 
     location.href = url.href
