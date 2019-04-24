@@ -5,6 +5,13 @@ function main () {
   function removeParams (uri) {
     return uri.replace(/([&\\?].+?=.+?$)/, '')
   }
+  function listTextToArr (listText) {
+    let list = listText.split(',')
+    return list
+      .map(t => t.trim())
+      .filter(t => t)
+
+  }
 
   const url = new URL(location.href)
   let listText = url.searchParams.get('list')
@@ -18,10 +25,7 @@ function main () {
   const textarea = document.getElementById('textarea')
   textarea.value = listText
 
-  let list = listText.split(',')
-  list = list
-    .map(t => t.trim())
-    .filter(t => t)
+  let list = listTextToArr(listText)
 
   document.getElementById('result').innerHTML = randomChoice(list)
 
@@ -29,7 +33,7 @@ function main () {
     const url = new URL(removeParams(location.href))
 
     if (textarea.value) {
-      url.searchParams.set('list', list.join(','));
+      url.searchParams.set('list', listTextToArr(textarea.value));
     }
 
     location.href = url.href
