@@ -6,7 +6,7 @@ function main () {
     return uri.replace(/([&\\?].+?=.+?$)/, '')
   }
   function listTextToArr (listText) {
-    listText = listText.replace('、', ',')
+    listText = listText.replace(/、/g, ',')
     let list = listText.split(',')
     return list
       .map(t => t.trim())
