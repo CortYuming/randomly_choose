@@ -36,7 +36,14 @@ function main () {
       url.searchParams.set('list', listTextToArr(textarea.value))
     }
 
-    location.href = url.href
+    document.getElementById('result').innerHTML = randomChoice(list)
+
+    const result = document.getElementById('result');
+
+    result.style.animation = 'none';
+    setTimeout(function() {
+      result.style.animation = 'anime1 5s ease';
+    }, 50);
   };
 
   document.addEventListener('keydown', (event) => {
