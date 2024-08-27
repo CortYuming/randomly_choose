@@ -38,6 +38,13 @@ function main () {
 
     location.href = url.href
   };
+
+  document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+      event.preventDefault(); // Prevent page scrolling
+      document.getElementById('btn').click();
+    }
+  });
 }
 
 window.onload = function () {
