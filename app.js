@@ -12,6 +12,12 @@ function main () {
       .map(t => t.trim())
       .filter(t => t)
   }
+  let count = 0
+
+  function counter () {
+    count ++
+    document.getElementById('count').innerHTML = count
+  }
 
   const url = new URL(location.href)
   let listText = url.searchParams.get('list')
@@ -29,6 +35,8 @@ function main () {
 
   document.getElementById('result').innerHTML = randomChoice(list)
 
+  counter()
+
   document.getElementById('btn').onclick = () => {
     const url = new URL(removeParams(location.href))
 
@@ -37,6 +45,7 @@ function main () {
     }
 
     document.getElementById('result').innerHTML = randomChoice(list)
+    counter(count)
 
     const result = document.getElementById('result');
 
@@ -44,6 +53,7 @@ function main () {
     setTimeout(function() {
       result.style.animation = 'anime1 5s ease';
     }, 50);
+
   };
 
   document.addEventListener('keydown', (event) => {
