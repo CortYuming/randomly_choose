@@ -13,6 +13,7 @@ function main () {
       .filter(t => t)
   }
   let count = 0
+  let canReload = true
 
   function counter () {
     count ++
@@ -54,11 +55,15 @@ function main () {
       result.style.animation = 'anime1 5s ease';
     }, 50);
 
+    if (canReload) {
+      location.replace(url.toString());
+    }
   };
 
   document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
       event.preventDefault(); // Prevent page scrolling
+      canReload = false
       document.getElementById('btn').click();
     }
   });
