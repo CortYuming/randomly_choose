@@ -62,9 +62,13 @@ function main () {
 
   document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
-      event.preventDefault(); // Prevent page scrolling
       canReload = false
-      document.getElementById('btn').click();
+      const targetTextarea = document.getElementById('textarea');
+
+      if (!document.activeElement || document.activeElement !== targetTextarea) {
+        event.preventDefault(); // Prevent page scrolling
+        document.getElementById('btn').click();
+      }
     }
   });
 }
